@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validation Form by JS</title>
+</head>
+
+<body>
+<div style="width:300px; border:1px solid black; padding:20px;">
+<form id="myForm">
+  Name: <input type="text" id="name"><br><br>
+
+  Email: <input type="text" id="email"><br><br>
+
+  Password: <input type="password" id="password"><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<p id="error" style="color:red"></p>
+</div>
+
+<script>
+
+// attach submit event to form
+document.getElementById("myForm").addEventListener("submit", function(event){
+
+    event.preventDefault(); // stop page reload
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let error = document.getElementById("error");
+
+    if(name === ""){
+        error.innerText = "Name cannot be empty";
+        return;
+    }
+
+    if(!email.includes("@")){
+        error.innerText = "Invalid email";
+        return;
+    }
+
+    if(password.length < 6){
+        error.innerText = "Password must be at least 6 characters";
+        return;
+    }
+
+    error.style.color = "green";
+    error.innerText = "Form Submitted Successfully!";
+});
+
+</script>
+
+</body>
+</html>
